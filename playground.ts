@@ -1,13 +1,35 @@
+import { log } from "console"
+
+
+
+interface Person {
+    name:string
+    age:number
+}
+
+interface BussinessPerson extends Person {
+    salary: number
+}
+
+interface AcademicPerson extends Person {
+    publications: string[]
+}
 
 
 export default function play(){
    
-    const random = Math.random()> 0.5 ? "Hello " : [1,2]
-    if(typeof random ==="string"){
-        const upper = random.toUpperCase()
-    }
+   const person: AcademicPerson ={
+    name: "jay",
+    age: 20,
+    publications : ["1", "2"]
+   }
 
-    else console.log(random)
-    
-    
+   const person2: BussinessPerson ={
+    name: "jay",
+    age: 20,
+    salary:10000
+   }
+    function logPerson(person: Person) {}
+
+    logPerson(person)
 }
