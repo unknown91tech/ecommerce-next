@@ -15,7 +15,7 @@ class Person {
 }
 
 interface PersonLoggerFn {
-    (name: string , age: string) : string
+    (name: string , age?: string) : string
 }
 
 export default function play(){
@@ -28,7 +28,7 @@ export default function play(){
     }
 
     
-    const logPersonInfo:PersonLoggerFn = (personName: string, personAge: string) =>{
+    const logPersonInfo:PersonLoggerFn = (personName: string, personAge: string = "0") =>{
         const info = "Name :" + personName + ", age: " +personAge
         console.log(info)
         return info
@@ -39,6 +39,6 @@ export default function play(){
         console.log(info)
         return info
     }
-    const log =logPersonInfo(name, age)
+    const log =logPersonInfo(name)
     logPersonInfo2(new Person("Ed", "40"))
 }
