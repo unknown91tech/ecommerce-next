@@ -21,63 +21,21 @@ interface Person {
     prop1: string
     prop2: number
   }
-type Human = BussinessPerson |AcademicPerson | {kind : "otherType", special : string}
 
-type RaceCar = {
+  type Noop=() =>any
+  type Noop2 = () =>void
 
-    name: string
-    maxSpeed: 200
-    team:string
-}
 
-type CityCar ={
-    name: string
-    space: string
-    maxSpeed : 100
-} 
-type Car = RaceCar | CityCar
 export default function play(){
     
-    const car: RaceCar = {
-        name: "McL",
-        maxSpeed: 200,
-        team: "McL"
-    }
 
-  const person: Person = {
-    prop1: "",
-    prop2: 2,
-    name: "",
-    kind: "academic",
-    age: 23
-  }             
+  function fn1(x:Noop): void{
+    
+  }
 
-    function logPersonInfo (human: Human){
-        if(human.kind === "academic"){
-            console.log(human)
-        }else if(human.kind == "business"){
-            console.log(human)
-        }
-        else if(human.kind ==="otherType"){
-            console.log(human)
-        }
-        else console.log(human)
-        
-    }
+  function fn2(x:Noop2): void{
+    
+  } 
 
-    function logCarInfo(car: Car){
-        console.log((car as RaceCar).team)
-
-         switch(car.maxSpeed) {
-      case 200:
-        console.log(car.team)
-        break;
-      case 100:
-        console.log(car)
-        break;
-      default:
-        console.log(car)
-    }
-
-    }
+    
 }
