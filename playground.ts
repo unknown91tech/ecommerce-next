@@ -17,7 +17,10 @@ interface AcademicPerson extends Person {
     kind : "academic"
     publications: string[]
 }
-
+interface Person {
+    prop1: string
+    prop2: number
+  }
 type Human = BussinessPerson |AcademicPerson | {kind : "otherType", special : string}
 
 type RaceCar = {
@@ -40,6 +43,14 @@ export default function play(){
         maxSpeed: 200,
         team: "McL"
     }
+
+  const person: Person = {
+    prop1: "",
+    prop2: 2,
+    name: "",
+    kind: "academic",
+    age: 23
+  }             
 
     function logPersonInfo (human: Human){
         if(human.kind === "academic"){
