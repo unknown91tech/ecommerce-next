@@ -21,11 +21,9 @@ export default function Home({
 }: InferGetServerSidePropsType<typeof getStaticProps>) {
 
   
-
-
   return (
     <div>
-      {products}
+      {JSON.stringify(products)}
     </div>
   )
 }
