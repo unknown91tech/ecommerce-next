@@ -37,7 +37,7 @@ export default function play(){
     }
 
     function logCarInfo(car: Car){
-        console.log(car.name)
+        console.log((car as RaceCar).team)
 
          switch(car.maxSpeed) {
       case 200:
