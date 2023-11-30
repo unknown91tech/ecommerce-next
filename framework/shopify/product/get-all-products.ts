@@ -4,7 +4,7 @@ import getAllProductsQuery from "../utils/queries/get-all-products"
 import fetchApi from "../utils/fetch-api"
 import { ProductConnection } from "../schema"
 import { normalizeProduct } from "../utils/normalize"
-import { Product } from "../../common/types/products"
+import { Product } from "@common/types/products"
 
 type ReturnType = {
     products: ProductConnection
