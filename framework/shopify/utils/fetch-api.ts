@@ -11,7 +11,7 @@ type FetcherResult<T> = {
 const fetchApi = async <T>({query}: FetcherParams) : Promise<FetcherResult<T>> => {
     const url = "http://localhost:4000/graphql"
 
-    const res =await fetch(url, {
+    const res = await fetch(url, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
