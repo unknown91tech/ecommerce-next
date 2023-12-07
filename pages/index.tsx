@@ -1,10 +1,12 @@
 
 import type { InferGetServerSidePropsType } from "next"
 import getAllProducts from "framework/shopify/product/get-all-products"
+import getConfig from "framework/shopify/api/config"
 
 export async function getStaticProps() {
+  const config =getConfig()
 
-  const products =await getAllProducts()
+  const products =await getAllProducts(config)
 
   return{
     props:{
