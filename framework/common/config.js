@@ -4,8 +4,9 @@ const path = require("path")
 const fs = require("fs")
 const merge = require("deepmerge")
 
+
 function withFrameWorkConfig(defaultConfig = {}){
-        const framework = "shopify"
+        const framework = defaultConfig?.framework.name
 
         const frameworkNextConfig = require(path.join("../", framework , "next.config"))
         const config = merge(defaultConfig, frameworkNextConfig)

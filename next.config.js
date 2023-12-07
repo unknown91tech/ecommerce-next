@@ -9,6 +9,11 @@ const { withFrameWorkConfig } = require("./framework/common/config")
 // module.exports = nextConfig
 
 module.exports = withFrameWorkConfig({
+
+  framework: {
+    name: "shopify"
+  },
+
   i18n: {
     locales: ["en-US", "es"],
     defaultLocale: "en-US"
