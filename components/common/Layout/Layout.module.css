@@ -1,4 +1,5 @@
 .root{
     @apply h-full mx-auto ;
-    background-color: var(--green);
+    background-color: theme("colors.black");
+    color: theme("textColor.secondary");
 }

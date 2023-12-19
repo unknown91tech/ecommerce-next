@@ -8,7 +8,6 @@ const Layout: FC = ({children}: any) => {
     return(
     <div className={style.root}>
         <main 
-        style={{color: "var(--primary)"}}
         className=".fit">
         {children}
         </main>
