@@ -1,10 +1,15 @@
+
 import { FC } from "react"
+import style from "./Layout.module.css"
+
+
 
 const Layout: FC = ({children}: any) => {
-    return(
-        <div className="layout">
+    return(<>
+        <main className={style.root}>
         {children}
-        </div>
+        </main>
+        </>
     )
 }
 
