@@ -1,5 +1,7 @@
+
+
 .root{
-    @apply h-full mx-auto ;
+    @apply bg-primary h-full mx-auto ;
     background-color: theme("colors.black");
     color: theme("textColor.secondary");
 }
