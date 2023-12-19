@@ -2,6 +2,6 @@
 
 .root{
     @apply bg-primary h-full mx-auto ;
-    background-color: theme("colors.black");
-    color: theme("textColor.secondary");
+    /* background-color: theme("colors.black");
+    color: theme("textColor.secondary"); */
 }
