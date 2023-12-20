@@ -2,7 +2,6 @@
 .root {
     @apply grid gap-0 grid-cols-1;
   
-    
         @apply lg:grid-cols-3 lg:grid-rows-2;
     
   
@@ -14,3 +13,10 @@
       }
     }
   }
+
+.layoutA {
+    color: red;
+}
+.layoutB {
+    color: blue;
+}
