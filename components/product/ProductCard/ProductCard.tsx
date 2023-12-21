@@ -3,6 +3,7 @@ import { FC } from "react"
 import Link from "next/link"
 import Image from "next/legacy/image"
 import s from "./ProductCArd.module.css"
+import { inherits } from "util"
 
 interface Props {
   product: Product
@@ -22,11 +23,12 @@ const ProductCard: FC<Props> = ({product}) => {
         </div>
         { product.images && (
           <Image
+          className={s.productImage}
             alt={product.name ?? "Product image"}
             src={product.images[0].url ?? placeholderImage}
             height={540}
             width={540}
-            quality="85"
+            quality="100"
             layout="responsive"
           />
         )
