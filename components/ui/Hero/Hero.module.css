@@ -1,22 +1,22 @@
 
 
 .root {
-    @apply grid grid-cols-1 py-32;
+    @apply flex flex-col py-32 justify-center ;
   
     @screen md {
-      @apply grid-cols-2;
+      @apply flex-row;
     }
   }
 
 
 .headline{
-    @apply text-4xl leading-10 font-extrabold text-white sm:text-5xl sm:leading-none
+    @apply flex-1 max-w-xl text-4xl leading-10 font-bold text-white sm:text-5xl sm:leading-none
             sm:tracking-tighter lg:text-6xl;
 
 }
 
 .description {
-    @apply mt-5 text-xl leading-7 text-white transition-transform;
+    @apply flex-1  mt-5 text-xl leading-7 text-white transition-transform;
     
     &:hover {
         transform:scale(1.05);
@@ -24,6 +24,6 @@
 }
 
 .link{
-    @apply text-white pt-3 font-light hover:underline cursor-auto;
+    @apply block text-white pt-3 font-light hover:underline cursor-auto;
 
 }
