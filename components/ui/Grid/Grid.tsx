@@ -6,7 +6,7 @@ import { Layout } from "@components/common"
 
 
 interface Props {
-    children: ReactNode[]
+    children: ReactNode[] | ReactNode
     layout? : "A" | "B"
 }
 
