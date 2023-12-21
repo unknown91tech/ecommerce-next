@@ -32,7 +32,8 @@
   }
 
   .productImage{
-    @apply transition-transform block duration-300;
+    @apply transition-transform block duration-300 ;
+    
   }
   
   .productBg {
