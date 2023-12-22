@@ -9,12 +9,14 @@ import { useUI } from "@components/ui/context"
 
 
 const Layout: FC = ({children}: any) => {
-    const ui =useUI()
+    const {isSidebarOpen, closeSidebar} =useUI()
     
     return(
     <div className={style.root}>
         <Navbar/>
-        <Sidebar isOpen={ui.isSidebarOpen}>
+        <Sidebar
+        onClose={closeSidebar}
+        isOpen={isSidebarOpen}>
         <CartSidebar />
       </Sidebar>
         <main 
