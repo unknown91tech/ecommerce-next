@@ -1,0 +1,19 @@
+
+
+.root{
+    @apply inset-0 flex flex-row items-start md:py-6;
+}
+
+.link{
+    @apply text-accents-6 leading-6 font-medium transition;
+    &:hover{
+        @apply text-accents-9;
+    }
+}
+
+.logo{
+    @apply text-2xl font-bold;
+}
+.left{
+    @apply flex justify-around py-1 ml-12 space-x-6;
+}
