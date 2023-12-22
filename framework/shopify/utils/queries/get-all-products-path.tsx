@@ -1,7 +1,7 @@
 
 
 const getAllProductsPathsQuery= `
-    query getAllProductsPaths($first: Int =250)
+    query getAllProductsPaths($first: Int =250){
         products(first: $first) {
             edges{
                 node{
@@ -9,7 +9,7 @@ const getAllProductsPathsQuery= `
                 }
             }            
         }
-
+    }
 
 `
 export default getAllProductsPathsQuery;

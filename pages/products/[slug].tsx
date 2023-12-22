@@ -4,6 +4,7 @@ import { Layout } from "@components/common"
 import { GetStaticPaths, GetStaticPropsContext, InferGetStaticPropsType } from "next"
 import getConfig from "framework/shopify/api/config"
 import getAllProductsPaths from "framework/shopify/product/get-all-products-paths"
+import { getProduct } from "framework/shopify/product"
 
 // fetch all of the products slugs
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -19,11 +20,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps = async ({
   params }: GetStaticPropsContext<{slug: string}>
 ) => {
+  const config = getConfig()
+  const { product } = await getProduct(config)
   return {
     props: {
-      product: {
-        slug: params?.slug
-      }
+      product
     }
   }
 }
@@ -33,6 +34,7 @@ export default function ProductSlug({
 ) {
   return (
     <div>
+      {product.name}
       {product.slug}
     </div>
   )
