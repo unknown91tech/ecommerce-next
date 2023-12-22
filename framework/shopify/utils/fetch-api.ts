@@ -3,7 +3,7 @@ import exp from "constants"
 
 
 
-const fetchApi = async <T>({url,query}: ApiFetcherOptions) : Promise<ApiFetcherResults<T>> => {
+const fetchApi = async <T>({url,query,variables}: ApiFetcherOptions) : Promise<ApiFetcherResults<T>> => {
    
 
     const res = await fetch(url, {
@@ -12,7 +12,8 @@ const fetchApi = async <T>({url,query}: ApiFetcherOptions) : Promise<ApiFetcherR
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            query
+            query,
+            variables
         })
     })
 
