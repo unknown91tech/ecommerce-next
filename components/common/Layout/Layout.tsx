@@ -5,13 +5,16 @@ import Footer from "../Footer"
 import Navbar from "../Navbar"
 import { Sidebar } from "@components/ui"
 import { CartSidebar } from "@components/cart"
+import { useUI } from "@components/ui/context"
 
 
 const Layout: FC = ({children}: any) => {
+    const ui =useUI()
+    
     return(
     <div className={style.root}>
         <Navbar/>
-        <Sidebar>
+        <Sidebar isOpen={ui.isSidebarOpen}>
         <CartSidebar />
       </Sidebar>
         <main 
