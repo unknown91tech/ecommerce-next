@@ -7,7 +7,7 @@ import { Layout } from "@components/common"
 
 interface Props {
     children: ReactNode[] | ReactNode
-    layout? : "A" | "B"
+    layout? : "A" | "B" | string
 }
 
 const Grid: FC <ReactNode> = ({children, layout="A"}:any) => {
