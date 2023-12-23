@@ -4,10 +4,12 @@
     @screen lg {
       @apply grid-cols-12;
     }
+    
   }
   
   .productDisplay {
-    @apply relative flex px-0 pb-0 box-border col-span-1 bg-violet;
+    @apply relative flex px-0 pb-0 box-border col-span-1 ;
+    background-color: #1E1E1E;
     min-height: 600px;
   
     @screen md {
@@ -28,26 +30,29 @@
   }
   
   .nameBox {
-    @apply absolute top-6 left-0 z-20 pr-16;
+    @apply absolute top-6 left-0 z-20 pr-16 ;
   
     @screen lg {
       @apply left-6 pr-16;
     }
   
     & .name {
-      @apply px-6 py-2 bg-primary text-primary font-bold;
+      @apply px-6 py-2 bg-primary text-primary font-bold ;
+      text-color: #1E1E1E;
       font-size: 2rem;
       letter-spacing: 0.4px;
     }
   
     & .price {
-      @apply px-6 py-2 pb-4 bg-primary text-primary font-bold inline-block tracking-wide;
+      @apply px-6 py-2 pb-4 bg-primary text-primary font-bold inline-block tracking-wide ;
+      text-color: #1E1E1E;
     }
   
     @screen lg {
       & .name,
       & .price {
-        @apply bg-violet-light text-white;
+        @apply bg-lime-500;
+        text-color: #1E1E1E
       }
     }
   }
@@ -68,7 +73,7 @@
     & > div {
       @apply h-full;
       & > div {
-        @apply h-full;
+        @apply h-full ;
       }
     }
   }
