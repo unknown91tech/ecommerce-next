@@ -7,9 +7,10 @@ interface Props {
     color?: string
     label?: string
     varient: "size" | "color" | string
+    onClick: ()=> void
 }
 
-const Swatch:FC<Props> =({color, label, varient}) => {
+const Swatch:FC<Props> =({color, label, varient, ...rest}) => {
 
     label = label?.toLowerCase()
     varient = varient?.toLowerCase()
@@ -17,7 +18,8 @@ const Swatch:FC<Props> =({color, label, varient}) => {
     return (
         <button 
         style={color ? {backgroundColor: color}: {}}
-        className={s.root}>
+        className={s.root}
+        {...rest}>
             
             {varient==="size" ? label: null }
         </button>
