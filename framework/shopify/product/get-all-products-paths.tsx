@@ -1,5 +1,4 @@
 import { ApiConfig } from "@common/types/api"
-// import { Product } from "@common/types/product"
 import { Product } from "@common/types/products"
 import { ProductConnection } from "@framework/schema"
 import getAllProductsPathsQuery from "@framework/utils/queries/get-all-products-path"

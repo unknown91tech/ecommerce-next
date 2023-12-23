@@ -22,7 +22,6 @@ const getProduct = async (options: {config: ApiConfig, variables: Variables}): P
   })
 
 
-  console.log(JSON.stringify(data.productByHandle, null, 2))
   const {productByHandle} =data
 
   return {
