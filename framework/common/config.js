@@ -3,40 +3,43 @@
 const path = require("path")
 const fs = require("fs")
 const merge = require("deepmerge")
+const prettier = require("prettier")
+
 const ALLOWED_FW = ["shopify", "bigcommerce", "shopify_local"]
 const FALLBACK_FW = "shopify"
 
+function withFrameworkConfig(defaultConfig = {}) {
+  let framework = defaultConfig?.framework?.name
 
-function withFrameWorkConfig(defaultConfig = {}){
-        let framework = defaultConfig?.framework?.name
+  if (!framework) {
+    throw new Error("The api framework is missing, please add a valid provider!")
+  }
 
-        if(!framework){
-                throw new Error("The api framework is missing, please add a valid provider!")
-        }
-        if (!ALLOWED_FW.includes(framework)) {
-                throw new Error(`The api framework: ${framework} cannot be found, please use one of ${ALLOWED_FW.join(", ")}`)
-        }
-            
-        if (framework === "shopify_local") {
-                framework = FALLBACK_FW
-        }
+  if (!ALLOWED_FW.includes(framework)) {
+    throw new Error(`The api framework: ${framework} cannot be found, please use one of ${ALLOWED_FW.join(", ")}`)
+  }
 
-        const frameworkNextConfig = require(path.join("../", framework , "next.config"))
-        const config = merge(defaultConfig, frameworkNextConfig)
+  if (framework === "shopify_local") {
+    framework = FALLBACK_FW
+  }
 
-        const tsPath = path.join(process.cwd(), "tsconfig.json")
-        const tsConfig = require(tsPath)
-        tsConfig.compilerOptions.paths["@framework"] = [`@framework/${framework}`]
-        tsConfig.compilerOptions.paths["@framework/*"] = [`@framework/${framework}/*`]
+  const frameworkNextConfig = require(path.join("../", framework, "next.config"))
+  const config = merge(defaultConfig, frameworkNextConfig)
 
-        fs.writeFileSync(
-                tsPath,
-                JSON.stringify(
-                        tsConfig, null , 2
-                )
-        )
+  const tsPath = path.join(process.cwd(), "tsconfig.json")
+  const tsConfig = require(tsPath)
 
-        return config
+  tsConfig.compilerOptions.paths["@framework"] = [`framework/${framework}`]
+  tsConfig.compilerOptions.paths["@framework/*"] = [`framework/${framework}/*`]
+
+  fs.writeFileSync(
+    tsPath,
+    prettier.format(
+      JSON.stringify(tsConfig), { parser: "json" }
+    )
+  )
+
+  return config
 }
 
-module.exports = {withFrameWorkConfig} 
+module.exports = { withFrameworkConfig }

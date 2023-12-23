@@ -1,3 +1,4 @@
+
 const productConnection = `
   pageInfo {
     hasNextPage

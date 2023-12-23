@@ -2,18 +2,19 @@
 export interface ProductImage {
     url: string
     alt?: string
-}
-export interface ProductPrice {
+  }
+  
+  export interface ProductPrice {
     value: number
-    currencyCode: "USD" | "EUR"| string
-}
-
-export interface Product {
+    currencyCode: "USD" | "EUR" | string
+  }
+  
+  export interface Product {
     id: string
     name: string
-    description : string
+    description: string
     slug: string
     path: string
     images: ProductImage[]
     price: ProductPrice
-}
+  }
