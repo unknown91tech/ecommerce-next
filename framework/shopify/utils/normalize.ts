@@ -21,10 +21,25 @@ const normalizeProductOption = ({
     values,
     name: displayName
 }: ProductOption) =>{  
-    console.log("ID", id)
-    console.log("NAME", displayName)
-    console.log("VALUES", values)
-    return {}
+    
+    const normalized = {
+        id,
+        displayName,
+        values: values.map(valu => {
+            let output: any = {
+                label: values
+            }
+            if(displayName.match(/colou?r/gi)){
+                output ={
+                    ...output,
+                    hexColor: values
+                }
+            }
+            return output
+        })
+    }
+
+    return normalized
     
 }
 export function normalizeProduct(productNode: ShopifyProduct): Product{
