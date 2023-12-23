@@ -51,7 +51,7 @@
     @screen lg {
       & .name,
       & .price {
-        @apply bg-lime-500;
+        @apply bg-lime-400;
         text-color: #1E1E1E
       }
     }

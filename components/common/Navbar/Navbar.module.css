@@ -1,7 +1,8 @@
 
 
 .root{
-    @apply inset-0 flex flex-row items-start md:py-6;
+    @apply inset-0 flex flex-row items-start md:py-6 ;
+    
 }
 
 .link{
@@ -12,8 +13,12 @@
 }
 
 .logo{
-    @apply text-2xl font-bold;
+    @apply text-2xl font-bold font-mono;
+    &:hover{
+        @apply scale-110 transition-transform duration-150 border-lime-300;
+    }
 }
+
 .left{
     @apply flex justify-around py-1 ml-12 space-x-6;
 }

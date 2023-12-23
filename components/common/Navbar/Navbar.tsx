@@ -12,7 +12,7 @@ const Navbar:FC = () =>{
                 <div className="flex flex-1 items-center">
                     <Link href="/">
                         <div className={s.logo}>
-                            NEXT_STORE
+                            <span className={s.name}>Cryptombie</span>
                         </div>
                     </Link>
                     <nav className={s.left}>
