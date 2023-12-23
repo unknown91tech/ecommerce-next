@@ -31,11 +31,11 @@ const ProductView: FC<Props> = ({ product }) => {
                 <Image
                   className={s.img}
                   src={image.url}
-                  alt={image.alt}
+                  alt={""}
                   width={1050}
                   height={1050}
-                  quality="85"
-                />
+                  quality="85"                
+                  />
               </div>
             )}
           </ProductSlider>
