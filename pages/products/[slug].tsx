@@ -40,4 +40,5 @@ export default function ProductSlug({
     </div>
   )
 }
-ProductSlug.Layout = Layout
+ProductSlug.Layout =  Layout
+ 
