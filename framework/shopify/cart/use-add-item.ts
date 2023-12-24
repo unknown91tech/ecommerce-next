@@ -10,10 +10,22 @@ export const handler: MutationHook = {
   fetcherOptions: {
     query: `query { hello }`
   },
-  fetcher: ({fetch,options}) => {
+  fetcher: ({fetch,options ,input}) => {
+
+    const variables= {
+      checkoutId: null,
+        lineItems: [
+          {
+            varientId: input.variantId,
+            quantity: 1
+          }
+        ]
+    }
+
     const respone = fetch({
       
-      ...options
+      ...options,
+      variables
     })
     return respone
   },
