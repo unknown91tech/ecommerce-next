@@ -1,5 +1,6 @@
 import { ReactNode, createContext, useContext } from "react";
-import { ApiConfig, ApiHooks, ApiProviderContext } from "./types/api";
+import { ApiConfig, ApiProviderContext } from "./types/api";
+import { ApiHooks } from "./types/hooks";
 import { useMemo } from "react";
 
 
