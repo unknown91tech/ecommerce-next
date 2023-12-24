@@ -7,10 +7,13 @@ export default useAddItem
 
 
 export const handler: MutationHook = {
-  fetcher: ({fetch,input}) => {
+  fetcherOptions: {
+    query: `query { hello }`
+  },
+  fetcher: ({fetch,options}) => {
     const respone = fetch({
       
-      query: ` query{hello} `
+      ...options
     })
     return respone
   },
