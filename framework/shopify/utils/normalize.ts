@@ -1,5 +1,6 @@
 
 import {
+  Checkout,
     ImageEdge,
     MoneyV2,
     Product as ShopifyProduct,
@@ -47,6 +48,10 @@ import {
     }
   
     return normalized
+  }
+
+  export const normalizeCart = (checkout: Checkout): any => {
+    return checkout
   }
   
   const normalizeProductVariants = ({ edges }: ProductVariantConnection) => {
