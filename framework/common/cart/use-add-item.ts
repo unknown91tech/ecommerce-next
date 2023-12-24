@@ -1,11 +1,11 @@
+import { useHook } from "@common/utils/use-hook"
+
 
 
 const useAddItem= () =>{
-    return(input: any) => {
-        return {
-            output: JSON.stringify(input)+" _MODIFIED"
-        }
-    }
+    const hook = useHook((hooks) => hooks.cart.useAddItem)
+
+    return hook.useHook()
 }
 
 export default useAddItem
