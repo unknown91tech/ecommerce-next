@@ -3,13 +3,14 @@
 import { useAddItem } from "@common/cart"
 import { MutationHook } from "@common/types/hooks"
 import { getCheckoutId } from "../utils"
+import { checkoutLineItemsAddMutation } from "@framework/utils/mutations"
 
 export default useAddItem
 
 
 export const handler: MutationHook = {
   fetcherOptions: {
-    query: `query { hello }`
+    query: checkoutLineItemsAddMutation
   },
   fetcher: ({fetch,options ,input}) => {
 

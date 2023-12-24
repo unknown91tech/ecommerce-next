@@ -25,10 +25,10 @@
         "framework/common/*"
       ],
       "@framework": [
-        "@framework/shopify"
+        "framework/shopify"
       ],
       "@framework/*": [
-        "@framework/shopify/*"
+        "framework/shopify/*"
       ],
       "@components/*": [
         "components/*"
