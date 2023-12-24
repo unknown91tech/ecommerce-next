@@ -9,7 +9,7 @@ export default useAddItem
 export const handler: MutationHook = {
   fetcher: ({fetch,input}) => {
     const respone = fetch({
-      url: "http://localhost:4000/graphql",
+      
       query: ` query{hello} `
     })
     return respone

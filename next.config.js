@@ -11,7 +11,7 @@ const { withFrameWorkConfig } = require("./framework/common/config")
 module.exports = withFrameWorkConfig({
 
   framework: {
-    name: "shopify_local"
+    name: process.env.NEXT_PUBLIC_FRAMEWORK
   },
 
   i18n: {
