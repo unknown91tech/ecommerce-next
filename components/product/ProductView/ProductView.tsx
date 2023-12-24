@@ -6,49 +6,42 @@ import { Container, Button } from '@components/ui'
 import Image from "next/image"
 import { Product } from '@common/types/products'
 import { ProductSlider, Swatch } from "@components/product"
-import { Choices, getVariant } from "../helpers"
+import { Choices, getVariant } from '../helpers'
 import { useUI } from '@components/ui/context'
-import { useAddItem } from '@common/cart'
-
-
+import useAddItem from '@framework/cart/use-add-item'
 
 interface Props {
   product: Product
 }
 
-
 const ProductView: FC<Props> = ({ product }) => {
-  const [choices, setChoices] = useState<Choices>({})
-  
- 
-  const{openSidebar} = useUI()
+  const [ choices, setChoices ] = useState<Choices>({})
+  const { openSidebar } = useUI()
   const addItem = useAddItem()
 
   const variant = getVariant(product, choices)
 
-  const addToCart= async () => {
-    try{
-      const item=  {
+  const addToCart = () => {
+    try {
+      const item = {
         productId: String(product.id),
         variantId: variant?.id,
         variantOptions: variant?.options
       }
-      const t= await addItem(item)
-      alert(JSON.stringify(t))
-      openSidebar()
-    }
-    catch{
 
-    }
+      alert(JSON.stringify(item))
+      openSidebar()
+    } catch {}
   }
 
   return (
     <Container>
-      
       <div className={cn(s.root, 'fit', "mb-5")}>
         <div className={cn(s.productDisplay, 'fit')}>
           <div className={s.nameBox}>
-            <h1 className={s.name}>{product.name}</h1>
+            <h1 className={s.name}>
+              {product.name}
+            </h1>
             <div className={s.price}>
               {product.price.value}
               {` `}
@@ -64,20 +57,19 @@ const ProductView: FC<Props> = ({ product }) => {
                   alt={""}
                   width={1050}
                   height={1050}
-                  quality="85"                
-                  />
+                  quality="85"
+                />
               </div>
             )}
           </ProductSlider>
         </div>
         <div className={s.sidebar}>
-          
           <section>
-          {product.options.map(option =>
+            { product.options.map(option =>
               <div key={option.id} className="pb-4">
                 <h2 className="uppercase font-medium">{option.displayName}</h2>
                 <div className="flex flex-row py-4">
-                { option.values.map(optValue => {
+                  { option.values.map(optValue => {
                     const activeChoice = choices[option.displayName.toLowerCase()]
                     return (
                       <Swatch
@@ -94,21 +86,18 @@ const ProductView: FC<Props> = ({ product }) => {
                         }}
                       />
                     )}
-                    
-                  ) }
+                  )}
                 </div>
-             </div>
+              </div>
             )}
-           
             <div className="pb-14 break-words w-full max-w-xl text-lg">
-              {product.description}
+              { product.description }
             </div>
           </section>
           <div>
             <Button
-            className={s.button}
-              onClick={addToCart}
-            >
+              className={s.button}
+              onClick={addToCart}>
               Add to Cart
             </Button>
           </div>
