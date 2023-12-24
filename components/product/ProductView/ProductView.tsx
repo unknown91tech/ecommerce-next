@@ -26,14 +26,14 @@ const ProductView: FC<Props> = ({ product }) => {
 
   const variant = getVariant(product, choices)
 
-  const addToCart= () => {
+  const addToCart= async () => {
     try{
-      const item= {
+      const item=  {
         productId: String(product.id),
         variantId: variant?.id,
         variantOptions: variant?.options
       }
-      const t=addItem(item)
+      const t= await addItem(item)
       alert(JSON.stringify(t))
       openSidebar()
     }
