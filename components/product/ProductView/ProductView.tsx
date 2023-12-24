@@ -13,11 +13,11 @@ interface Props {
 type AvailableChoices = "color" | "size" | string
 
 type Choices = {
-  [P in AvailableChoices]: string
+  [P in AvailableChoices]: string 
 }
 
 const ProductView: FC<Props> = ({ product }) => {
-  const [choices, setChoices] = useState<Choices>()
+  const [choices, setChoices] = useState<Choices>({})
 
   return (
     <Container>
@@ -54,19 +54,23 @@ const ProductView: FC<Props> = ({ product }) => {
               <div key={option.id} className="pb-4">
                 <h2 className="uppercase font-medium">{option.displayName}</h2>
                 <div className="flex flex-row py-4">
-                  {option.values.map(optValue=> 
-                  <Swatch
-                    key={`${option.id}-${optValue.label}`}
-                    label = {optValue.label}
-                    color={optValue.hexColor}
-                    varient={option.displayName}
-                    onClick={() => {
-                      setChoices({
-                        ...choices,
-                        [option.displayName.toLowerCase()]: optValue.label.toLowerCase()
-                      })
-                    }}
-                  />
+                { option.values.map(optValue => {
+                    const activeChoice = choices[option.displayName.toLowerCase()]
+                    return (
+                      <Swatch
+                        key={`${option.id}-${optValue.label}`}
+                        label={optValue.label}
+                        color={optValue.hexColor}
+                        variant={option.displayName}
+                        active={optValue.label.toLowerCase() === activeChoice}
+                        onClick={() => {
+                          setChoices({
+                            ...choices,
+                            [option.displayName.toLowerCase()]: optValue.label.toLowerCase()
+                          })
+                        }}
+                      />
+                    )}
                     
                   ) }
                 </div>
