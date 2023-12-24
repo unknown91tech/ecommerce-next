@@ -20,6 +20,7 @@ interface Props {
 const ProductView: FC<Props> = ({ product }) => {
   const [choices, setChoices] = useState<Choices>({})
   const api= useApiProvider
+  debugger
   const{openSidebar} = useUI()
   const addItem = useAddItem()
 
