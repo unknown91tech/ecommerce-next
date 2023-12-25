@@ -2659,6 +2659,7 @@ export type HasMetafieldsMetafieldsArgs = {
 
 /** Represents an image resource. */
 export type Image = {
+  url: string | StaticImport
   __typename?: 'Image'
   /** A word or phrase to share the nature or contents of an image. */
   altText?: Maybe<Scalars['String']>
