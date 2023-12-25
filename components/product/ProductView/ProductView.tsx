@@ -16,6 +16,7 @@ interface Props {
 
 const ProductView: FC<Props> = ({ product }) => {
   const [ choices, setChoices ] = useState<Choices>({})
+  const [ isLoading, setIsLoading ] = useState(false)
 
   const { openSidebar } = useUI()
   const addItem = useAddItem()
@@ -26,14 +27,17 @@ const ProductView: FC<Props> = ({ product }) => {
     try {
       const item = {
         productId: String(product.id),
-        variantId: String(variant?.id),
-        variantOptions: variant?.options,
+        variantId: String(variant ? variant.id : product.variants[0].id),
         quantity: 1
       }
 
-      const output = await addItem(item)
+      setIsLoading(true)
+      await addItem(item)
+      setIsLoading(false)
       openSidebar()
-    } catch {}
+    } catch {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -56,7 +60,7 @@ const ProductView: FC<Props> = ({ product }) => {
                 <Image
                   className={s.img}
                   src={image.url}
-                  alt={image.alt}
+                  alt={""}
                   width={1050}
                   height={1050}
                   quality="85"
@@ -99,7 +103,9 @@ const ProductView: FC<Props> = ({ product }) => {
           <div>
             <Button
               className={s.button}
-              onClick={addToCart}>
+              onClick={addToCart}
+              isLoading={isLoading}
+            >
               Add to Cart
             </Button>
           </div>
