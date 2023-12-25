@@ -8,7 +8,7 @@ import { Product } from '@common/types/products'
 import { ProductSlider, Swatch } from "@components/product"
 import { Choices, getVariant } from '../helpers'
 import { useUI } from '@components/ui/context'
-import useAddItem from '@framework/cart/use-add-item'
+import useAddItem from "@framework/cart/use-add-item"
 
 interface Props {
   product: Product
@@ -16,20 +16,22 @@ interface Props {
 
 const ProductView: FC<Props> = ({ product }) => {
   const [ choices, setChoices ] = useState<Choices>({})
+
   const { openSidebar } = useUI()
   const addItem = useAddItem()
 
   const variant = getVariant(product, choices)
 
-  const addToCart = () => {
+  const addToCart = async () => {
     try {
       const item = {
         productId: String(product.id),
-        variantId: variant?.id,
-        variantOptions: variant?.options
+        variantId: String(variant?.id),
+        variantOptions: variant?.options,
+        quantity: 1
       }
 
-      alert(JSON.stringify(item))
+      const output = await addItem(item)
       openSidebar()
     } catch {}
   }
@@ -54,7 +56,7 @@ const ProductView: FC<Props> = ({ product }) => {
                 <Image
                   className={s.img}
                   src={image.url}
-                  alt={""}
+                  alt={image.alt}
                   width={1050}
                   height={1050}
                   quality="85"
