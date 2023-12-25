@@ -5,7 +5,6 @@ import Link from 'next/link'
 import s from './CartItem.module.css'
 import { Trash, Plus, Minus } from '@components/icons/icons'
 import { LineItem } from '@common/types/cart'
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode } from 'react'
 import { Swatch } from '@components/product'
 import useRemoveItem from '@framework/cart/use-remove-item'
 
@@ -16,9 +15,8 @@ const CartItem = ({
   item: LineItem
   currencyCode: string
 }) => {
-    const removeItem = useRemoveItem()
+  const removeItem = useRemoveItem()
   const price = (item.variant.price! * item.quantity) || 0
-
   const { options } = item
   return (
     <li
@@ -26,20 +24,19 @@ const CartItem = ({
         'opacity-75 pointer-events-none': false
       })}
     >
-      <div className="w-16 h-16 bg-indigo-700 relative overflow-hidden cursor-pointer">
-      <Image
-          onClick={() => {}}
+      <div className="w-16 h-16 bg-violet relative overflow-hidden cursor-pointer">
+        <Image
+          onClick={() => { } }
           className={s.productImage}
           width={150}
           height={150}
           src={item.variant.image!.url}
-          unoptimized
-        />
+          unoptimized alt={''}        />
       </div>
-      <div className="flex-1 flex flex-col text-base font-light">
+      <div className="flex-1 flex flex-col text-base">
         <Link href={`/`}>
           <span
-            className="font-light text-lg cursor-pointer leading-6"
+            className="font-bold text-lg cursor-pointer leading-6"
             onClick={() => {}}
           >
             {item.name}
@@ -88,6 +85,7 @@ const CartItem = ({
         <button
           onClick={ async () => {
             const cart = await removeItem({id: item.id})
+            
           }}
           className="flex justify-end outline-none"
         >
