@@ -5,6 +5,7 @@ import Link from 'next/link'
 import s from './CartItem.module.css'
 import { Trash, Plus, Minus } from '@components/icons/icons'
 import { LineItem } from '@common/types/cart'
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode } from 'react'
 
 const CartItem = ({
   item,
@@ -14,6 +15,8 @@ const CartItem = ({
   currencyCode: string
 }) => {
   const price = (item.variant.price! * item.quantity) || 0
+
+  const { options } = item
   return (
     <li
       className={cn('flex flex-row space-x-8 py-8', {
@@ -40,7 +43,16 @@ const CartItem = ({
             {item.name}
           </span>
         </Link>
-        Options Here
+        { options && options.length > 0 &&
+          (options.map((option: { displayName: any; values: { label: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined }[] }) =>
+            <span
+              key={`${item.id}-${option.displayName}`}
+              className="text-sm font-semibold text-accents-7"
+            >
+              {option.values[0].label}
+            </span>
+          ))
+        }
         <div className="flex items-center mt-3">
           <button type="button">
             <Minus onClick={() => {}}/>
