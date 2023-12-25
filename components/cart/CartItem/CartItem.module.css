@@ -4,7 +4,7 @@
     @apply w-8 border-accents-3 border mx-3 rounded-3xl text-center text-sm font-medium text-slate-800 bg-transparent transition;
 
     &:hover{
-        @apply scale-110 border-s-zinc-600 border-e-zinc-600 border-t-zinc-600 border-r-zinc-600 border-zinc-600 duration-100 ;
+        @apply  scale-110 border-s-zinc-600 border-e-zinc-600 border-t-zinc-600 border-r-zinc-600 border-zinc-600 duration-100 ;
     }
   }
   

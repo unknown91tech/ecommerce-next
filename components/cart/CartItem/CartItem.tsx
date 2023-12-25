@@ -6,6 +6,8 @@ import s from './CartItem.module.css'
 import { Trash, Plus, Minus } from '@components/icons/icons'
 import { LineItem } from '@common/types/cart'
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode } from 'react'
+import { Swatch } from '@components/product'
+import useRemoveItem from '@framework/cart/use-remove-item'
 
 const CartItem = ({
   item,
@@ -14,6 +16,7 @@ const CartItem = ({
   item: LineItem
   currencyCode: string
 }) => {
+    const removeItem = useRemoveItem()
   const price = (item.variant.price! * item.quantity) || 0
 
   const { options } = item
@@ -23,16 +26,15 @@ const CartItem = ({
         'opacity-75 pointer-events-none': false
       })}
     >
-      <div className="w-16 h-16 bg-indigo-600 relative overflow-hidden cursor-pointer">
-        <Link href={`/product/${item.path}`}>
-          <Image
-                      onClick={() => { } }
-                      className={s.productImage}
-                      width={180}
-                      height={180}
-                      src={item.variant.image!.url}
-                      unoptimized alt={''}          />
-        </Link>
+      <div className="w-16 h-16 bg-indigo-700 relative overflow-hidden cursor-pointer">
+      <Image
+          onClick={() => {}}
+          className={s.productImage}
+          width={150}
+          height={150}
+          src={item.variant.image!.url}
+          unoptimized
+        />
       </div>
       <div className="flex-1 flex flex-col text-base font-light">
         <Link href={`/`}>
@@ -43,16 +45,24 @@ const CartItem = ({
             {item.name}
           </span>
         </Link>
-        { options && options.length > 0 &&
-          (options.map((option: { displayName: any; values: { label: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined }[] }) =>
-            <span
-              key={`${item.id}-${option.displayName}`}
-              className="text-sm font-semibold text-accents-7"
-            >
-              {option.values[0].label}
-            </span>
-          ))
-        }
+        <div className="flex p-1">
+          { options && options.length > 0 &&
+            (options.map((option: { values: any[]; displayName: string }) => {
+              const value = option.values[0]
+              return (
+                <Swatch
+                  key={`${item.id}-${option.displayName}`}
+                  size="sm"
+                  onClick={() => {}}
+                  label={value.label}
+                  color={value.hexColor}
+                  variant={option.displayName}
+                >
+                </Swatch>
+              )}
+            ))
+          }
+        </div>
         <div className="flex items-center mt-3">
           <button type="button">
             <Minus onClick={() => {}}/>
@@ -76,7 +86,9 @@ const CartItem = ({
       <div className="flex flex-col justify-between space-y-2 text-base">
         <span>{price} {currencyCode}</span>
         <button
-          onClick={() => {}}
+          onClick={ async () => {
+            const cart = await removeItem({id: item.id})
+          }}
           className="flex justify-end outline-none"
         >
           <Trash />
