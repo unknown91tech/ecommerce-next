@@ -24,8 +24,7 @@ const CartItem = ({
   const { options } = item
 
 
-  const handleQuantity = async (e: ChangeEvent<HTMLInputElement>) => {
-    const val = Number(e.target.value)
+  const handleQuantityChange = async (val: number) => {
 
     if (Number.isInteger(val) && val >= 0) {
       setQuantity(val)
@@ -38,17 +37,14 @@ const CartItem = ({
     }
   }
 
+  const handleQuantity = async (e: ChangeEvent<HTMLInputElement>) => {
+    const val = Number(e.target.value)
+    handleQuantityChange(val)
+  }
+
   const incrementQuantity = async (n = 1) => {
     const val = Number(quantity) + n
-    if (Number.isInteger(val) && val >= 0) {
-      setQuantity(val)
-      
-      await updateItem({
-        id: item.id,
-        variantId: item.variantId,
-        quantity: val
-      })
-    }
+    handleQuantityChange(val)
   }
 
   return (
