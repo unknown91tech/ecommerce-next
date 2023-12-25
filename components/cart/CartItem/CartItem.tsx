@@ -20,11 +20,11 @@ const CartItem = ({
   const { options } = item
   return (
     <li
-      className={cn('flex flex-row space-x-8 py-8', {
+      className={cn('flex text-white font-light flex-row space-x-8 py-8', {
         'opacity-75 pointer-events-none': false
       })}
     >
-      <div className="w-16 h-16 bg-violet relative overflow-hidden cursor-pointer">
+      <div className="w-16 h-16 text-white font-light bg-violet relative overflow-hidden cursor-pointer">
         <Image
           onClick={() => { } }
           className={s.productImage}
@@ -33,16 +33,16 @@ const CartItem = ({
           src={item.variant.image!.url}
           unoptimized alt={''}        />
       </div>
-      <div className="flex-1 flex flex-col text-base">
+      <div className="flex-1 text-white font-light flex flex-col text-base">
         <Link href={`/`}>
           <span
-            className="font-bold text-lg cursor-pointer leading-6"
+            className=" text-white font-light text-lg cursor-pointer leading-6"
             onClick={() => {}}
           >
             {item.name}
           </span>
         </Link>
-        <div className="flex p-1">
+        <div className="flex text-white font-light p-1">
           { options && options.length > 0 &&
             (options.map((option: { values: any[]; displayName: string }) => {
               const value = option.values[0]
@@ -60,7 +60,7 @@ const CartItem = ({
             ))
           }
         </div>
-        <div className="flex items-center mt-3">
+        <div className="flex text-white font-light items-center mt-3">
           <button type="button">
             <Minus onClick={() => {}}/>
           </button>
@@ -80,14 +80,13 @@ const CartItem = ({
           </button>
         </div>
       </div>
-      <div className="flex flex-col justify-between space-y-2 text-base">
+      <div className="flex text-white flex-col font-light justify-between space-y-2 text-base">
         <span>{price} {currencyCode}</span>
         <button
-          onClick={ async () => {
-            const cart = await removeItem({id: item.id})
+          onClick={  () => {removeItem({id: item.id})
             
           }}
-          className="flex justify-end outline-none"
+          className="flex justify-end text-white font-light outline-none"
         >
           <Trash />
         </button>
