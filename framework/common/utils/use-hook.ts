@@ -5,7 +5,7 @@ import { MutationHook } from "@common/types/hooks"
 import { useState } from "react"
 import useSWR from "swr"
 
-export const useHook = (fn: (apiHooks: ApiHooks) => Hook) => {
+export const useHook = <H>(fn: (apiHooks: ApiHooks) => H) => {
     const {hooks} = useApiProvider()
 
     return fn(hooks)
