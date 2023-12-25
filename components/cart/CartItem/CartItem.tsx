@@ -28,7 +28,7 @@ const CartItem = ({
 
     if (Number.isInteger(val) && val >= 0) {
       setQuantity(val)
-      
+
       await updateItem({
         id: item.id,
         variantId: item.variantId,
@@ -60,7 +60,8 @@ const CartItem = ({
           width={150}
           height={150}
           src={item.variant.image!.url}
-          unoptimized alt={''}        />
+          unoptimized 
+          alt={''}        />
       </div>
       <div className="flex-1 text-white font-light flex flex-col text-base">
         <Link href={`/`}>
