@@ -52,6 +52,7 @@ const normalizeLineItem = ({
       sku: variant?.sku ?? "",
       name: variant?.title,
       // TODO: image
+      
       image: {
         url: process.env.NEXT_PUBLIC_FRAMEWORK === "shopify_local" ?
           `/images/${variant?.image?.originalSrc}` :
