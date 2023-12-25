@@ -4,9 +4,17 @@ import { useAddItem } from "@common/cart"
 import { MutationHook } from "@common/types/hooks"
 import { getCheckoutId } from "../utils"
 import { checkoutLineItemsAddMutation } from "@framework/utils/mutations"
+import { Cart } from "@common/types/cart"
 
 export default useAddItem
 
+export type AddItemHook = {
+  fetcherInput: {
+    variantId: string
+    quantity: number
+  }
+  data: Cart
+}
 
 export const handler: MutationHook = {
   fetcherOptions: {

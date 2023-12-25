@@ -1,7 +1,20 @@
+import { ProductOption, ProductVariant } from "@framework/schema"
 
 
 interface Discount {
     value: number
+  }
+
+  export interface LineItem {
+    id: string
+    variantId: string
+    productId: string
+    name: string
+    path: string
+    quantity: number
+    discounts: Discount[]
+    options?: ProductOption[] | any
+    variant: ProductVariant
   }
   
   export interface Cart {

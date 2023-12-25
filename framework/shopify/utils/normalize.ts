@@ -11,7 +11,7 @@ import {
   } from "../schema"
   
   import { Product } from "@common/types/products"
-  import { Cart } from "@common/types/cart"
+  import { Cart, LineItem } from "@common/types/cart"
 
 export const normalizeCart = (checkout: Checkout): Cart => {
   return {
@@ -29,7 +29,7 @@ export const normalizeCart = (checkout: Checkout): Cart => {
 }
 const normalizeLineItem = ({
   node: { id, title, variant, ...rest}
-}: CheckoutLineItemEdge): any => {
+}: CheckoutLineItemEdge): LineItem => {
   return {
     id,
     variantId: String(variant?.id),
@@ -52,7 +52,7 @@ const normalizeLineItem = ({
       sku: variant?.sku ?? "",
       name: variant?.title,
       // TODO: image
-      
+
       image: {
         url: process.env.NEXT_PUBLIC_FRAMEWORK === "shopify_local" ?
           `/images/${variant?.image?.originalSrc}` :
